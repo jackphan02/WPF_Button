@@ -1,0 +1,781 @@
+﻿<Window x:Class="ButtonPracice01.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ButtonPracice01"
+        mc:Ignorable="d"
+        Title="WPF Buttons" Height="600" Width="800" FontWeight="Bold" FontSize="16">
+    <Window.Resources>
+
+        <!-- ====================================================================== -->
+        <!-- ======================== 3DButtonRound =============================== -->
+        <!-- ====================================================================== -->
+        <SolidColorBrush x:Key="3DShadowLightGrey" Color="#c0c0c0"/>
+        <SolidColorBrush x:Key="3DShadowMidGrey"   Color="#FF9E9C9C"/>
+        <SolidColorBrush x:Key="3DShadowDarkGrey"  Color="#FF595959"/>
+        
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <Style TargetType="{x:Type Button}" x:Key="3DButtonRound">
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}" >
+                        
+                        <Grid >
+                            <Border x:Name="ShadowBorder" CornerRadius="6" 
+                                 BorderBrush="{StaticResource 3DShadowMidGrey}" BorderThickness="2,2,2,2"  />
+                            <!-- set background here, entire button background very light grey, #A1EFEEEE -->
+                            <Grid x:Name="entireButton" Margin="3" Background="#A1EFEEEE" >
+                                <ContentPresenter x:Name="d3Text" Margin="0,0,0,0"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Grid>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="1,1,2,2" />
+                                <Setter TargetName="ShadowBorder" Property="BorderBrush" 
+                                        Value="{StaticResource 3DShadowMidGrey}" />
+                                <!-- more margin to show white edges -->
+                                <Setter TargetName="entireButton" Property="Margin" Value="3,3,3,3" />
+
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <!-- back to normal margin -->
+                                <Setter TargetName="entireButton" Property="Margin" Value="2,2,1,1" />
+                                <!-- move textwords to direction down and right -->
+                                <Setter TargetName="d3Text" Property="Margin" Value="2,2,0,0" />
+
+                                <!-- set dark on bottom and right edges-->
+                                <Setter TargetName="ShadowBorder" Property="BorderBrush" 
+                                        Value="{StaticResource 3DShadowDarkGrey}"/>
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="2,2,1,1" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                        
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <Style TargetType="{x:Type Button}" x:Key="ButtonBorderColor">
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}" >
+                        
+                        <Grid >
+                            <!-- set border color here -->
+                            <Border x:Name="ShadowBorder" CornerRadius="6" BorderBrush="Blue" 
+                                    BorderThickness="2,2,2,2"  />
+                            <!-- set background here, entire button background very light grey, #A1EFEEEE -->
+                            <Grid x:Name="entireButton" Margin="3" Background="#A1EFEEEE" >
+                                <ContentPresenter x:Name="d3Text" 
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- change border thickness to show visual effect -->
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="1,1,2,2" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <!-- change border thickness to show visual effect -->
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="2,2,1,1" />
+
+                                <!-- move textwords to direction down and right -->
+                                <Setter TargetName="d3Text" Property="Margin" Value="3,3,0,0" />
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <Style TargetType="{x:Type Button}" x:Key="ButtonBackgroundColor">
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        
+                        <Grid >
+                            <!-- set border color here -->
+                            <Border x:Name="ShadowBorder" CornerRadius="6" BorderBrush="Blue" 
+                                    BorderThickness="2,2,2,2"  />
+                            <!-- set background here, entire button background very light grey, #A1EFEEEE -->
+                            <Grid x:Name="entireButton" Margin="2" Background="LightCyan" >
+                                <ContentPresenter x:Name="d3Text" 
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- change border thickness to show visual effect -->
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="1,1,2,2" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <!-- change border thickness to show visual effect -->
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="2,2,1,1" />
+
+                                <!-- move textwords to direction down and right -->
+                                <Setter TargetName="d3Text" Property="Margin" Value="3,3,0,0" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <Style TargetType="{x:Type Button}" x:Key="3DButtonLight">
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        
+                        <!-- area of button -->
+                        <Grid >
+                            <!-- set one outside border color here -->
+                            <Border x:Name="ShadowBorder" CornerRadius="6" 
+                                    BorderBrush="Green" BorderThickness="3"/>
+                            <!-- set another border for entire inside, 
+                                         with margin the same BortherThickness -->
+                            <!-- set background here, entire button background -->
+                            <Border CornerRadius="4" Background="LightPink" Margin="3,3,3,3" >
+                                <Grid x:Name="entireButton">
+                                    <ContentPresenter x:Name="d3Text" HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center" Margin="0,0,0,0"/>
+                                </Grid>
+                            </Border>
+                            
+                        </Grid>
+
+                        <!-- set actions -->
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- change border thickness to show visual effect -->
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="1,1,2,2" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <!-- change border thickness to show visual effect -->
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="2,2,1,1" />
+
+                                <!-- move textwords to direction down 3, and right 3 -->
+                                <Setter TargetName="d3Text" Property="Margin" Value="3,3,0,0" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <Style TargetType="{x:Type Button}" x:Key="3DButtonDark">
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+
+                        <!-- area of button -->
+                        <Grid >
+                            <!-- set one outside border color here -->
+                            <Border x:Name="ShadowBorder" CornerRadius="6" 
+                                    BorderBrush="Blue" BorderThickness="3"/>
+                            <!-- set another border for entire inside,  
+                                         with margin the same BortherThickness -->
+                            <!-- set background here, entire button background -->
+                            <Border CornerRadius="4" Background="Blue" Margin="3,3,3,3" >
+
+                                <Grid x:Name="entireButton">
+                                    <ContentPresenter x:Name="d3Text" HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center" Margin="0,0,0,0"/>
+                                </Grid>
+                            </Border>
+
+                        </Grid>
+
+                        <!-- set actions -->
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- change border thickness to show visual effect -->
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="1,1,2,2" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <!-- change border thickness to show visual effect -->
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="2,2,1,1" />
+
+                                <!-- move textwords to direction down 3, and right 3 -->
+                                <Setter TargetName="d3Text" Property="Margin" Value="3,3,0,0" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <Style TargetType="{x:Type ToggleButton}" x:Key="BtnToggleStartStop">
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}" >
+
+                        <Grid >
+                            <Border x:Name="ShadowBorder" CornerRadius="6" 
+                                BorderBrush="{StaticResource 3DShadowMidGrey}" BorderThickness="2,2,2,2"/>
+                            <!--set background here, entire button background very light grey, #A1EFEEEE-->
+                            <Grid x:Name="entireButton" Background="#A1EFEEEE" Margin="3" >
+                                <ContentPresenter x:Name="d3Text" 
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <!-- when start, default -->
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter Property="Background" Value="Yellow" />
+                                <Setter Property="Foreground" Value="Black" />
+                                <Setter Property="Content" Value="Toggle Start"/>
+                            </Trigger>
+                            <!-- when stop -->
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="LightGray" />
+                                <Setter Property="Foreground" Value="Red" />
+                                <Setter Property="Content" Value="Toggle Stop"/>
+                            </Trigger>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="1,1,2,2"/>
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderBrush" Value="{StaticResource 3DShadowMidGrey}" />
+                                <!-- more margin to show white edges -->
+                                <Setter TargetName="entireButton" Property="Margin" Value="3,3,3,3" />
+
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <!-- back to normal margin -->
+                                <Setter TargetName="entireButton" Property="Margin" Value="2,2,1,1" />
+                                <!-- move textwords to direction down and right -->
+                                <Setter TargetName="d3Text" Property="Margin" Value="2,2,0,0" />
+
+                                <!-- set dark on bottom and right edges-->
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderBrush" Value="{StaticResource 3DShadowDarkGrey}"/>
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="2,2,1,1" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <Style TargetType="{x:Type ToggleButton}" x:Key="BtnToggleOnOff">
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}" >
+                        <Grid >
+                            <!-- set border color here -->
+                            <Border x:Name="ShadowBorder" CornerRadius="6" 
+                                    BorderBrush="Blue" BorderThickness="2"/>
+                            <!--set background here, entire button background very light grey, #A1EFEEEE-->
+                            <Grid x:Name="entireButton" Margin="3" Background="#A1EFEEEE" >
+                                <ContentPresenter x:Name="d3Text" 
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+
+                            <!-- when start, default -->
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter Property="Foreground" Value="Blue" />
+                                <Setter Property="Content" Value="Toggle ON"/>
+                            </Trigger>
+                            <!-- when stop -->
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Foreground" Value="Red" />
+                                <Setter Property="Content" Value="Toggle OFF"/>
+                            </Trigger>
+                            
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- change border thickness to show visual effect -->
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="1,1,2,2" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <!-- change border thickness to show visual effect -->
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="2,2,1,1" />
+
+                                <!-- move textwords to direction down and right -->
+                                <Setter TargetName="d3Text" Property="Margin" Value="3,3,0,0" />
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <Style TargetType="{x:Type ToggleButton}" x:Key="BtnToggleOnOffImage">
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}" >
+                        <Grid >
+                            <!-- set border color here -->
+                            <Border x:Name="ShadowBorder" CornerRadius="6" 
+                                    BorderBrush="Blue" BorderThickness="2,2,2,2"/>
+                            <!-- set background here, entire button background very light grey, #A1EFEEEE -->
+                            <Grid x:Name="entireButton" Margin="3" Background="#A1EFEEEE" >
+                                <ContentPresenter x:Name="d3Text" 
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+
+                            <!-- when start, default -->
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter Property="Foreground" Value="Blue" />
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Image Source="/ButtonPracice01;component/Images/SwitchOn.jpg" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <!-- when stop -->
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Foreground" Value="Black" />
+
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Image Source="/ButtonPracice01;component/Images/SwitchOff.jpg" />
+                                    </Setter.Value>
+                                </Setter>
+
+                            </Trigger>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- change border thickness to show visual effect -->
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="1,1,2,2" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <!-- change border thickness to show visual effect -->
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="2,2,1,1" />
+
+                                <!-- move textwords to direction down and right -->
+                                <Setter TargetName="d3Text" Property="Margin" Value="3,3,0,0" />
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <Style TargetType="{x:Type Button}" x:Key="3DButtonRoundImage">
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}" >
+
+                        <Grid >
+                            <Border x:Name="ShadowBorder" CornerRadius="6" 
+                                    BorderBrush="{StaticResource 3DShadowMidGrey}" 
+                                    BorderThickness="2,2,2,2"  />
+                            <!--set background here, entire button background very light grey, #A1EFEEEE-->
+                            <Grid x:Name="entireButton" Margin="3" Background="#A1EFEEEE" >
+                                <ContentPresenter x:Name="d3Text" 
+                                HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Grid>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="1,1,2,2" />
+                                <Setter TargetName="ShadowBorder" 
+                                    Property="BorderBrush" Value="{StaticResource 3DShadowMidGrey}" />
+                                <!-- more margin to show white edges -->
+                                <Setter TargetName="entireButton" Property="Margin" Value="3,3,3,3" />
+
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <!-- back to normal margin -->
+                                <Setter TargetName="entireButton" Property="Margin" Value="2,2,1,1" />
+                                <!-- move textwords to direction down and right -->
+                                <Setter TargetName="d3Text" Property="Margin" Value="2,2,0,0" />
+
+                                <!-- set dark on bottom and right edges-->
+                                <Setter TargetName="ShadowBorder" 
+                                    Property="BorderBrush" Value="{StaticResource 3DShadowDarkGrey}"/>
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="2,2,1,1" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->        
+        <Style TargetType="{x:Type Button}" x:Key="3DButtonMultipleLine">
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}" >
+
+                        <Grid >
+                            <Border x:Name="ShadowBorder" CornerRadius="6" 
+                                    BorderBrush="{StaticResource 3DShadowMidGrey}" 
+                                    BorderThickness="2,2,2,2"  />
+                            <!--set background here, entire button background very light grey, #A1EFEEEE-->
+                            <Grid x:Name="entireButton" Margin="3" Background="#A1EFEEEE" >
+                                <ContentPresenter x:Name="d3Text" 
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="1,1,2,2" />
+                                <Setter TargetName="ShadowBorder" 
+                                    Property="BorderBrush" Value="{StaticResource 3DShadowMidGrey}" />
+                                <!-- more margin to show white edges -->
+                                <Setter TargetName="entireButton" Property="Margin" Value="3,3,3,3" />
+
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <!-- back to normal margin -->
+                                <Setter TargetName="entireButton" Property="Margin" Value="2,2,1,1" />
+                                <!-- move textwords to direction down and right -->
+                                <Setter TargetName="d3Text" Property="Margin" Value="2,2,0,0" />
+
+                                <!-- set dark on bottom and right edges-->
+                                <Setter TargetName="ShadowBorder" 
+                                    Property="BorderBrush" Value="{StaticResource 3DShadowDarkGrey}"/>
+                                <Setter TargetName="ShadowBorder" 
+                                        Property="BorderThickness" Value="2,2,1,1" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <!-- ====================================================================== -->
+        <!-- ===================== TextBlock ====================================== -->
+        <!-- ====================================================================== -->
+        <Style x:Key="TextDemo" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>        
+        
+    </Window.Resources>
+
+    <!-- ====================================================================== -->
+    <!-- ===================== Building buttons =============================== -->
+    <!-- ====================================================================== -->
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="70"/>
+            
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="70"/>
+
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="1.0*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.0*"></ColumnDefinition>
+            <ColumnDefinition Width="1.0*"></ColumnDefinition>
+            <ColumnDefinition Width="1.0*"></ColumnDefinition>
+            <ColumnDefinition Width="1.0*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!-- ============================================================================ -->
+        <!-- ============================================================================ -->
+        <Grid Grid.Row="0" Grid.Column="0">
+            <TextBlock Text="3D button round " Style="{StaticResource TextDemo}"
+                VerticalAlignment="Bottom" Foreground="Blue" />
+        </Grid>
+
+        <!-- ====================== 3D button round ============================ -->
+        <!-- ====================== 3D button round ============================ -->
+        <Grid Grid.Row="1" Grid.Column="0">
+            
+            <Button x:Name="Btn3DRound" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Style="{StaticResource 3DButtonRound}"
+                Width="120" Height="44" Content="3D round" 
+                FontFamily="Calibri" FontSize="20" FontWeight="Bold" Foreground="Blue"
+                Click="Btn3DRound_Click"/>   
+            
+        </Grid>
+        
+        <!-- ============================================================================ -->        
+        <Grid Grid.Row="2" Grid.Column="0">
+            <TextBlock Text="3D, border color " Style="{StaticResource TextDemo}"
+                VerticalAlignment="Bottom" Foreground="Green" />
+        </Grid>
+
+        <!-- ====================== 3D button border color ============================ -->
+        <!-- ====================== 3D button border color ============================ -->
+        <Grid Grid.Row="3" Grid.Column="0">
+                        
+            <Button x:Name="BtnBorderColor" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Style="{StaticResource ButtonBorderColor}"
+                Width="120" Height="44" Content="Border color"                
+                FontFamily="Calibri" FontSize="20" FontWeight="Bold" Foreground="Green"
+                Click="BtnBorderColor_Click" />
+            
+        </Grid>
+
+        <!-- ============================================================================ -->        
+        <Grid Grid.Row="4" Grid.Column="0">
+            <TextBlock Text="Background color " Style="{StaticResource TextDemo}"
+                VerticalAlignment="Bottom" Foreground="Brown" />
+        </Grid>
+
+        <!-- ====================== 3D button background color ============================ -->
+        <!-- ====================== 3D button background color ============================ -->
+        <Grid Grid.Row="5" Grid.Column="0">
+
+            <Button x:Name="BtnBackGroundColor" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Style="{StaticResource ButtonBackgroundColor}"
+                Width="120" Height="44" Content="Back. color" FontFamily="Calibri"                 
+                FontSize="20" FontWeight="Bold" Foreground="Green"
+                Click="BtnBackGroundColor_Click" />
+
+        </Grid>
+
+        <!-- ============================================================================ -->
+        <Grid Grid.Row="0" Grid.Column="1">
+            <TextBlock Style="{StaticResource TextDemo}"
+                VerticalAlignment="Bottom" Foreground="Blue" >
+                Light color
+            </TextBlock>
+        </Grid>
+        <!-- ====================== Light button ========================================= -->
+        <!-- ====================== Light button ========================================= -->
+        <Grid Grid.Row="1" Grid.Column="1">
+
+            <Button x:Name="BtnLightColor" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Style="{StaticResource 3DButtonLight}"
+                Width="120" Height="44" Content="Light"                     
+                FontFamily="Calibri" FontSize="20" FontWeight="Bold" Foreground="White"
+                Click="BtnLightColor_Click" />
+
+        </Grid>
+
+        <!-- ============================================================================ -->
+        <Grid Grid.Row="2" Grid.Column="1">
+            <TextBlock Style="{StaticResource TextDemo}"
+                VerticalAlignment="Bottom" Foreground="Blue" >
+                Dark color
+            </TextBlock>
+        </Grid>
+
+        <!-- ====================== Dark button ========================================== -->
+        <!-- ====================== Dark button ========================================== -->
+        <Grid Grid.Row="3" Grid.Column="1">
+
+            <Button x:Name="BtnDarkColor" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Style="{StaticResource 3DButtonDark}"
+                Width="120" Height="44" Content="Dark"                     
+                FontFamily="Calibri" FontSize="20" FontWeight="Bold" Foreground="White"
+                Click="BtnDarkColor_Click" />
+
+        </Grid>
+
+        <!-- ============================================================================ -->        
+        <Grid Grid.Row="0" Grid.Column="2">
+            <TextBlock Style="{StaticResource TextDemo}"
+                VerticalAlignment="Bottom" Foreground="Black" >
+                Toogle button<LineBreak />
+                Start/Stop
+            </TextBlock>
+        </Grid>         
+        <!-- ====================== Toggel button Start/Stop ============================ -->
+        <!-- ====================== Toggel button Start/Stop ============================ -->         
+        <Grid Grid.Row="1" Grid.Column="2">
+            <ToggleButton Width="120" Height="44" Style="{StaticResource BtnToggleStartStop}" 
+                          FontFamily="Calibri" FontSize="20" FontWeight="Bold"
+                          Checked="BtnStart_Click" Unchecked="BtnStop_Click" />
+
+        </Grid>
+
+        <!-- ============================================================================ -->        
+        <Grid Grid.Row="2" Grid.Column="2">
+            <TextBlock Style="{StaticResource TextDemo}"
+                VerticalAlignment="Bottom" Foreground="Blue" >
+                Toogle button ON/OFF
+            </TextBlock>
+        </Grid>
+
+        <!-- ====================== Toggel button ON/OFF ================================ -->
+        <!-- ====================== Toggel button ON/OFF ================================ -->        
+        <!-- 3d toggle button, On/Off-->
+        <Grid Grid.Row="3" Grid.Column="2">
+            <ToggleButton Width="120" Height="44" Style="{StaticResource BtnToggleOnOff}" 
+                          FontFamily="Calibri" FontSize="20" FontWeight="Bold"
+                          Checked="BtnON_Click" Unchecked="BtnOFF_Click" />
+        </Grid>
+        
+        <!-- ============================================================================ -->
+        <Grid Grid.Row="0" Grid.Column="3">
+            <TextBlock Style="{StaticResource TextDemo}"
+                VerticalAlignment="Bottom" Foreground="Blue" >
+                Button with image
+            </TextBlock>
+        </Grid>
+        
+        <!-- ====================== Toggel button with image ============================ -->
+        <!-- ====================== Toggel button with image ============================ -->
+        <Grid Grid.Row="5" Grid.Column="2">
+            <ToggleButton Width="120" Height="44" Style="{StaticResource BtnToggleOnOffImage}" 
+                          FontFamily="Calibri" FontSize="20" FontWeight="Bold"
+                          Checked="BtnOnImag_Click" Unchecked="BtnOffImag_Click" />
+        </Grid>
+
+        <!-- ============================================================================ -->
+        <Grid Grid.Row="4" Grid.Column="2">
+            <TextBlock Style="{StaticResource TextDemo}"
+                VerticalAlignment="Bottom" Foreground="Green" >
+                Toogle button<LineBreak />
+                On/Off imgages
+            </TextBlock>
+        </Grid>
+
+        <!-- ====================== Button with image =================================== -->
+        <!-- ====================== Button with image =================================== -->
+        <Grid Grid.Row="1" Grid.Column="3">
+
+            <Button x:Name="BtnImgage" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Style="{StaticResource 3DButtonRoundImage}"
+                Width="120" Height="44" 
+                Click="BtnImgage_Click" >
+                <Image Source="/ButtonPracice01;component/Images/ThumbsUp.png" />
+            </Button>
+
+        </Grid>
+
+        <!-- ============================================================================ -->
+        <Grid Grid.Row="2" Grid.Column="3">
+            <TextBlock Style="{StaticResource TextDemo}"
+                VerticalAlignment="Bottom" Foreground="Blue" >
+                Button with<LineBreak />
+                multiple lines
+            </TextBlock>
+        </Grid>
+
+        <!-- ====================== Multiple line button ================================ -->
+        <!-- ====================== Multiple line button ================================ -->        
+        <Grid Grid.Row="3" Grid.Column="3">
+            
+            <Button x:Name="BtnMultipleLines" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Style="{StaticResource 3DButtonMultipleLine}"
+                Width="120" Height="44" 
+                FontFamily="Calibri" FontSize="20" FontWeight="Bold" Foreground="Blue"
+                Click="BtnMultipleLines_Click">
+
+                <TextBlock Foreground="Blue" 
+                    FontSize="16" FontFamily="Calibri" Width="120" Height="44" 
+                    TextAlignment="Center"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+			        Line 1, 3D<LineBreak />
+			        Line 2 .....
+                </TextBlock>
+            </Button>
+
+        </Grid>
+
+        <!-- =============================Display clikcing ============================== -->
+        <!-- =============================Display clikcing ============================== -->
+        <Grid x:Name="Col0" Grid.Row="7" Grid.Column="0" Background="Yellow"></Grid>
+        <Grid x:Name="Col1" Grid.Row="7" Grid.Column="1" Background="Brown"></Grid>
+        <Grid x:Name="Col2" Grid.Row="7" Grid.Column="2" Background="Yellow"></Grid>
+        <Grid x:Name="Col3" Grid.Row="7" Grid.Column="3" Background="Brown"></Grid>
+
+        <Grid Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2">
+            <TextBlock x:Name="TbToogleInfo" Foreground="Blue" 
+                       FontSize="20" FontFamily="Calibri" FontWeight="Bold"
+                       Height="30" TextAlignment="Center"
+                       HorizontalAlignment="Left" VerticalAlignment="Bottom" Text="...">
+            </TextBlock>
+        </Grid>
+
+        <!-- ============================================================================ -->
+        <!-- ============================================================================ -->
+    </Grid>
+
+
+</Window>

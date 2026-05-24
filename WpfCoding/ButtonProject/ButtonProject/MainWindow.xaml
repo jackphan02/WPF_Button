@@ -1,0 +1,364 @@
+﻿<Window x:Class="ButtonProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+        xmlns:local="clr-namespace:ButtonProject"
+        mc:Ignorable="d"        
+        Title="Buttons with different shapes" Height="600" Width="800" >
+
+    <Window.Resources>
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <!-- ====================================================================== -->
+        <SolidColorBrush x:Key="3DShadowLightGrey" Color="#c0c0c0"/>
+        <SolidColorBrush x:Key="3DShadowMidGrey" Color="#FF9E9C9C"/>
+        <SolidColorBrush x:Key="3DShadowDarkGrey" Color="#FF595959"/>
+
+        <!-- ====================================================================== -->
+        <!-- ====================== Button star =================================== -->
+        <!-- ====================================================================== -->
+        <Style x:Key ="ButtonStar" TargetType ="{x:Type Button}">
+
+            <Setter Property ="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType ="{x:Type Button}">
+                        <Grid>
+                            <!-- build a shape -->
+                            <ed:RegularPolygon x:Name="pol" Width="110" InnerRadius="0.5" Margin="0,0,0,0" 
+                                PointCount="5" Stretch="Fill" Fill="Blue"
+                                Stroke="{StaticResource 3DShadowMidGrey}" StrokeThickness="3">
+                            </ed:RegularPolygon>
+                            <!-- text area -->
+                            <ContentPresenter x:Name="PolyText" 
+                                HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,4,0,0" />
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName = "pol" Property="StrokeThickness" Value="1" />
+
+                            </Trigger>
+                            <Trigger Property ="IsPressed" Value ="True">
+
+                                <Setter TargetName = "pol" Property="StrokeThickness" Value="3" />
+                                <Setter TargetName = "pol" Property="Fill" Value="LightBlue" />
+                                <Setter TargetName = "pol" 
+                                    Property="Stroke" Value="{StaticResource 3DShadowDarkGrey}" />
+
+                                <!-- move textwords down 4 and right 2 -->
+                                <Setter TargetName="PolyText" Property="Margin" Value="2,8,0,0" />
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ====================================================================== -->
+        <!-- ========================= Button circle ============================== -->
+        <!-- ====================================================================== -->
+        <Style x:Key ="ButtonCycle" TargetType ="{x:Type Button}">
+
+            <Setter Property ="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType ="{x:Type Button}">
+
+                        <!-- build button area -->
+                        <Grid x:Name="entireCycle">
+
+                            <!-- build a shape -->
+                            <Ellipse x:Name="ellShape"  Width="60"  Height="60"  Fill="#A1EFEEEE"  
+                                     Stroke="{StaticResource 3DShadowMidGrey}"  StrokeThickness="2" />
+
+                            <!-- text area -->
+                            <ContentPresenter x:Name="EclipseText" 
+                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <!-- set actions -->
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName = "ellShape" Property="StrokeThickness" Value="1" />
+
+                            </Trigger>
+                            <Trigger Property ="IsPressed" Value ="True">
+                                <Setter TargetName="entireCycle" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.99" ScaleY="0.99"/>
+                                    </Setter.Value>
+                                </Setter>
+
+                                <Setter TargetName = "ellShape" Property="StrokeThickness" Value="3" />
+                                <Setter TargetName = "ellShape" Property="Fill" Value="LightBlue" />
+                                <Setter TargetName = "ellShape" 
+                                    Property="Stroke" Value="{StaticResource 3DShadowDarkGrey}" />
+
+                                <!-- move textwords down 4 -->
+                                <Setter TargetName="EclipseText" Property="Margin" Value="0,4,0,0" />
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ====================================================================== -->
+        <!-- ===================== Button triangle up ============================= -->
+        <!-- ====================================================================== -->
+        <Style x:Key ="ButtonTriangleUp" TargetType ="{x:Type Button}">
+
+            <Setter Property ="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType ="{x:Type Button}">
+                        <Grid x:Name="entireTriangleDown">
+                            <!-- build a shape -->
+                            <ed:RegularPolygon x:Name="triangleDown" Width="110" InnerRadius="1" 
+                                Margin="0,0,0,0" PointCount="3" Stretch="Fill" Fill="Green"
+                                Stroke="{StaticResource 3DShadowMidGrey}" 
+                                StrokeThickness="3" RenderTransformOrigin="0.5,0.5" >
+
+                                <!-- rotate the triangle -->
+                                <ed:RegularPolygon.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="0.55" ScaleY="0.7" />
+                                        <RotateTransform Angle="0"/>
+                                    </TransformGroup>
+                                </ed:RegularPolygon.RenderTransform>
+
+                            </ed:RegularPolygon>
+                            <!-- text area -->
+                            <ContentPresenter x:Name="TriangleDownText" 
+                                HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,14,0,0" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName = "triangleDown" Property="StrokeThickness" Value="1" />
+
+                            </Trigger>
+                            <Trigger Property ="IsPressed" Value ="True">
+
+                                <Setter TargetName = "triangleDown" Property="StrokeThickness" Value="3" />
+                                <Setter TargetName = "triangleDown" Property="Fill" Value="LightBlue" />
+                                <Setter TargetName = "triangleDown" 
+                                        Property="Stroke" Value="{StaticResource 3DShadowDarkGrey}" />
+
+                                <!-- move textwords down 4 -->
+                                <Setter TargetName="TriangleDownText" Property="Margin" Value="0,10,0,0" />
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ====================================================================== -->
+        <!-- ==================== Button triangle down ============================ -->
+        <!-- ====================================================================== -->
+        <Style x:Key ="ButtonTriangleDown" TargetType ="{x:Type Button}">
+
+            <Setter Property ="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType ="{x:Type Button}">
+                        <Grid x:Name="entireTriangleDown">
+                            <!-- build a shape -->
+                            <ed:RegularPolygon x:Name="triangleDown" Width="110" InnerRadius="1" 
+                                Margin="0,0,0,0" PointCount="3" Stretch="Fill" Fill="Green"
+                                Stroke="{StaticResource 3DShadowMidGrey}" 
+                                StrokeThickness="3" RenderTransformOrigin="0.5,0.5" >
+
+                                <!-- rotate the triangle -->
+                                <ed:RegularPolygon.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="0.55" ScaleY="0.7" />
+                                        <RotateTransform Angle="180"/>
+                                    </TransformGroup>
+                                </ed:RegularPolygon.RenderTransform>
+
+                            </ed:RegularPolygon>
+                            <!-- text area -->
+                            <ContentPresenter x:Name="TriangleDownText" 
+                                HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-14,0,0" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName = "triangleDown" Property="StrokeThickness" Value="1" />
+
+                            </Trigger>
+                            <Trigger Property ="IsPressed" Value ="True">
+
+                                <Setter TargetName = "triangleDown" Property="StrokeThickness" Value="3" />
+                                <Setter TargetName = "triangleDown" Property="Fill" Value="LightBlue" />
+                                <Setter TargetName = "triangleDown" 
+                                        Property="Stroke" Value="{StaticResource 3DShadowDarkGrey}" />
+
+                                <!-- move textwords down 4 -->
+                                <Setter TargetName="TriangleDownText" Property="Margin" Value="0,-10,0,0" />
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ====================================================================== -->
+        <!-- ====================== Button wall =================================== -->
+        <!-- ====================================================================== -->
+        <Style x:Key ="ButtonWall" TargetType ="{x:Type Button}">
+
+            <Setter Property ="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType ="{x:Type Button}">
+                        <Grid>
+                            <!-- build a shape -->
+                            <Path x:Name="BtnWall" Stroke="Black" StrokeThickness="3" Fill="LightGray" >
+                                <Path.Data>
+                                    <PathGeometry>
+                                        <PathGeometry.Figures>
+                                            <PathFigure StartPoint="0,0" IsClosed="True">
+                                                <!-- draw a wall line -->
+                                                <PolyLineSegment Points="10,0
+                                                     10,20
+                                                     30,20
+                                                     30,0
+                                                     70,0
+                                                     70,20
+                                                     90,20
+                                                     90,0
+                                                     100,0
+                                                     100,50
+                                                     0,50                                                               
+                                                     "/>
+                                            </PathFigure>
+                                        </PathGeometry.Figures>
+                                    </PathGeometry>
+                                </Path.Data>
+                            </Path>
+                            <!-- text area -->
+                            <ContentPresenter x:Name="TriangleDownText" Margin="0,12,0,0" 
+                                              HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName = "BtnWall" Property="StrokeThickness" Value="1" />
+
+                            </Trigger>
+                            <Trigger Property ="IsPressed" Value ="True">
+
+                                <Setter TargetName = "BtnWall" Property="StrokeThickness" Value="3" />
+                                <Setter TargetName = "BtnWall" Property="Fill" Value="LightBlue" />
+                                <Setter TargetName = "BtnWall" 
+                                        Property="Stroke" Value="{StaticResource 3DShadowDarkGrey}" />
+
+                                <!-- move textwords up 4 -->
+                                <Setter TargetName="TriangleDownText" Property="Margin" Value="0,8,0,0"  />
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ====================================================================== -->
+        <!-- ===================== TextBlock ====================================== -->
+        <!-- ====================================================================== -->
+        <Style x:Key="TextDemo" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
+
+    <!-- ====================================================================== -->
+    <!-- ===================== Building buttons =============================== -->
+    <!-- ====================================================================== -->
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="1.0*"/>
+            <RowDefinition Height="1.0*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.0*"></ColumnDefinition>
+            <ColumnDefinition Width="140"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="1.0*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!-- ============================================================================ -->
+        <!-- button star -->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Button x:Name="BtnStart" Style="{StaticResource ButtonStar}" Content="F2" 
+                    FontFamily="Calibri" FontSize="16" FontWeight="Bold" 
+                    Foreground="White" Click="BtnStart_Click" />
+        </Grid>
+
+        <!-- ============================================================================ -->
+        <!-- button cycle -->
+        <Grid x:Name="BtnCircle" Grid.Row="4" Grid.Column="1">
+            <Button Style="{StaticResource ButtonCycle}" Content="Ch" 
+                    FontFamily="Calibri" FontSize="20" FontWeight="Bold" 
+                    Foreground="Blue" Click="BtnCircle_Click" />
+        </Grid>
+
+        <!-- ============================================================================ -->
+        <!-- button triangle up -->
+        <Grid x:Name="BtnUp" Grid.Row="1" Grid.Column="2">
+            <Button Style="{StaticResource ButtonTriangleUp}" Content="Up" 
+                    FontFamily="Calibri" FontSize="16" FontWeight="Bold" 
+                    Foreground="White" Click="BtnUp_Click" />
+        </Grid>
+
+        <!-- ============================================================================ -->
+        <!-- button triangle down -->
+        <Grid Grid.Row="2" Grid.Column="2">
+            <Button x:Name="BtnDown" Style="{StaticResource ButtonTriangleDown}" 
+                    Content="Dn" 
+                    FontFamily="Calibri" FontSize="16" FontWeight="Bold" 
+                    Foreground="White" Click="BtnDown_Click"/>
+        </Grid>
+
+        <!-- ============================================================================ -->
+        <!-- button wall -->
+        <Grid Grid.Row="4" Grid.Column="2">
+            <Button x:Name="BtnWall" Style="{StaticResource ButtonWall}" Content="Wall" 
+                    FontFamily="Calibri" FontSize="16" FontWeight="Bold"
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Foreground="Brown" Click="BtnWall_Click"/>
+        </Grid>
+
+        <!-- ========= text display ===================================================== -->
+        <Grid Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2">
+            <TextBlock x:Name="TbDemoNote" FontSize="20"
+                       Style="{StaticResource TextDemo}"
+                VerticalAlignment="Bottom" Foreground="Purple" >
+                ...
+            </TextBlock>
+        </Grid>
+
+        <!-- ============================================================================ -->
+        <!-- ============================================================================ -->
+        <!-- ============================================================================ -->
+
+    </Grid>
+
+</Window>    

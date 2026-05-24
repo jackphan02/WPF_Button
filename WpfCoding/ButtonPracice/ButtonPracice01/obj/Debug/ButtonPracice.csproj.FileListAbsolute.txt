@@ -1,0 +1,15 @@
+C:\MyDocs\CSharpWorks\wpfStudy\WpfTopics\ButtonWriting\WpfCoding\ButtonPracice\ButtonPracice01\bin\Debug\ButtonPracice01.exe.config
+C:\MyDocs\CSharpWorks\wpfStudy\WpfTopics\ButtonWriting\WpfCoding\ButtonPracice\ButtonPracice01\bin\Debug\ButtonPracice01.exe
+C:\MyDocs\CSharpWorks\wpfStudy\WpfTopics\ButtonWriting\WpfCoding\ButtonPracice\ButtonPracice01\bin\Debug\ButtonPracice01.pdb
+C:\MyDocs\CSharpWorks\wpfStudy\WpfTopics\ButtonWriting\WpfCoding\ButtonPracice\ButtonPracice01\obj\Debug\MainWindow.g.cs
+C:\MyDocs\CSharpWorks\wpfStudy\WpfTopics\ButtonWriting\WpfCoding\ButtonPracice\ButtonPracice01\obj\Debug\App.g.cs
+C:\MyDocs\CSharpWorks\wpfStudy\WpfTopics\ButtonWriting\WpfCoding\ButtonPracice\ButtonPracice01\obj\Debug\ButtonPracice01_MarkupCompile.cache
+C:\MyDocs\CSharpWorks\wpfStudy\WpfTopics\ButtonWriting\WpfCoding\ButtonPracice\ButtonPracice01\obj\Debug\ButtonPracice01_MarkupCompile.lref
+C:\MyDocs\CSharpWorks\wpfStudy\WpfTopics\ButtonWriting\WpfCoding\ButtonPracice\ButtonPracice01\obj\Debug\MainWindow.baml
+C:\MyDocs\CSharpWorks\wpfStudy\WpfTopics\ButtonWriting\WpfCoding\ButtonPracice\ButtonPracice01\obj\Debug\ButtonPracice01.g.resources
+C:\MyDocs\CSharpWorks\wpfStudy\WpfTopics\ButtonWriting\WpfCoding\ButtonPracice\ButtonPracice01\obj\Debug\ButtonPracice01.Properties.Resources.resources
+C:\MyDocs\CSharpWorks\wpfStudy\WpfTopics\ButtonWriting\WpfCoding\ButtonPracice\ButtonPracice01\obj\Debug\ButtonPracice.csproj.GenerateResource.cache
+C:\MyDocs\CSharpWorks\wpfStudy\WpfTopics\ButtonWriting\WpfCoding\ButtonPracice\ButtonPracice01\obj\Debug\ButtonPracice.csproj.CoreCompileInputs.cache
+C:\MyDocs\CSharpWorks\wpfStudy\WpfTopics\ButtonWriting\WpfCoding\ButtonPracice\ButtonPracice01\obj\Debug\ButtonPracice01.exe
+C:\MyDocs\CSharpWorks\wpfStudy\WpfTopics\ButtonWriting\WpfCoding\ButtonPracice\ButtonPracice01\obj\Debug\ButtonPracice01.pdb
+C:\MyDocs\CSharpWorks\wpfStudy\WpfTopics\ButtonWriting\WpfCoding\ButtonPracice\ButtonPracice01\obj\Debug\ButtonPracice.csprojAssemblyReference.cache
